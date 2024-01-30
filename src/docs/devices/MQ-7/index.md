@@ -58,8 +58,8 @@ substitutions:
   mq7_supply_voltage: "5.0V"
   # Temperature / Humidity Compensation
   # replace "temperature" with the id of your temperature sensor (celsius) and "humidity" with the id of your humidity sensor
-  temperature_sensor_id: "temperature"
-  humidity_sensor_id: "humidity"
+  temperature_sensor_id: "temperature" #look like 'xiatemp2_temperature' without "sensor."
+  humidity_sensor_id: "humidity" #like 'xiatemp2_humidity'
   # Calibration: place the sensor in clean air (outdoor) for a few hours and use the value of mq7_compensated_resistance
   mq7_clean_air_compensated_resistance: "55000"
 
@@ -119,10 +119,10 @@ sensor:
   # Replace with your own temperature / humidity sensor, located near the MQ-7
   - platform: homeassistant
     id: ${temperature_sensor_id}
-    entity_id: sensor.temperature
+    entity_id: sensor.${temperature_sensor_id}
   - platform: homeassistant
     id: ${humidity_sensor_id}
-    entity_id: sensor.humidity
+    entity_id: sensor.${humidity_sensor_id}
   - platform: adc
     id: ${mq7_id}_raw
     name: "${mq7_name} Voltage"
